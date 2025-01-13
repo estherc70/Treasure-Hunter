@@ -140,7 +140,7 @@ public class Hunter {
      * @return A string representation of the hunter.
      */
     public String infoString() {
-        String str = hunterName + " has this much " + gold + " gold";
+        String str = hunterName + " has " + gold + " gold";
         if (!kitIsEmpty()) {
             str += " and " + getInventory();
         }
