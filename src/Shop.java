@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Scanner;
 
 /**
@@ -81,11 +82,11 @@ public class Shop {
      * @return the string representing the shop's items available for purchase and their prices.
      */
     public String inventory() {
-        String str = "Water: " + WATER_COST + " gold\n";
-        str += "Rope: " + ROPE_COST + " gold\n";
-        str += "Machete: " + MACHETE_COST + " gold\n";
-        str += "Horse: " + HORSE_COST + " gold\n";
-        str += "Boat: " + BOAT_COST + " gold\n";
+        String str = Color.BLACK + "Water: " + WATER_COST + " gold\n" + Color.BLACK;
+        str += Color.BLACK + "Rope: " + ROPE_COST + " gold\n" + Color.BLACK;
+        str += Color.BLACK + "Machete: " + MACHETE_COST + " gold\n" + Color.BLACK;
+        str += Color.BLACK + "Horse: " + HORSE_COST + " gold\n" + Color.BLACK;
+        str += Color.BLACK + "Boat: " + BOAT_COST + " gold\n" + Color.BLACK;
         return str;
     }
 
@@ -97,7 +98,7 @@ public class Shop {
     public void buyItem(String item) {
         int costOfItem = checkMarketPrice(item, true);
         if (customer.buyItem(item, costOfItem)) {
-            System.out.println("Ye' got yerself a " + item + ". Come again soon.");
+            System.out.println("Ye' got yerself a " +  Colors.PURPLE + item + Colors.RESET + ". Come again soon.");
         } else {
             System.out.println("Hmm, either you don't have enough gold or you've already got one of those!");
         }
