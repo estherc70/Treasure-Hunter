@@ -14,6 +14,7 @@ public class Shop {
     private static final int MACHETE_COST = 6;
     private static final int HORSE_COST = 12;
     private static final int BOAT_COST = 20;
+    private static final int BOOT_COST = 8;
 
     // static variables
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -82,11 +83,12 @@ public class Shop {
      * @return the string representing the shop's items available for purchase and their prices.
      */
     public String inventory() {
-        String str = Color.BLACK + "Water: " + WATER_COST + " gold\n" + Color.BLACK;
-        str += Color.BLACK + "Rope: " + ROPE_COST + " gold\n" + Color.BLACK;
-        str += Color.BLACK + "Machete: " + MACHETE_COST + " gold\n" + Color.BLACK;
-        str += Color.BLACK + "Horse: " + HORSE_COST + " gold\n" + Color.BLACK;
-        str += Color.BLACK + "Boat: " + BOAT_COST + " gold\n" + Color.BLACK;
+        String str = Colors.BLACK + "Water: " + WATER_COST + " gold\n" + Colors.RESET;
+        str += Colors.BLACK + "Rope: " + ROPE_COST + " gold\n" + Colors.RESET;
+        str += Colors.BLACK + "Machete: " + MACHETE_COST + " gold\n" + Colors.RESET;
+        str += Colors.BLACK + "Horse: " + HORSE_COST + " gold\n" + Colors.RESET;
+        str += Colors.BLACK + "Boat: " + BOAT_COST + " gold\n" + Colors.RESET;
+        str += Colors.BLACK + "Boots: " + BOOT_COST + " gold\n" + Colors.RESET;
         return str;
     }
 
