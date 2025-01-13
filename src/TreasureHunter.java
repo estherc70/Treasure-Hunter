@@ -31,10 +31,21 @@ public class TreasureHunter {
      * Starts the game; this is the only public method
      */
     public void play() {
-        welcomePlayer();
-        enterTown();
-        showMenu();
+        //while (!gameOver()) {
+            welcomePlayer();
+            enterTown();
+            showMenu();
+        /*}
+        System.out.println("game over");*/
     }
+
+    /*public boolean gameOver() {
+        if (hunter.getGold() < 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }*/
 
     /**
      * Creates a hunter object at the beginning of the game and populates the class member variable with it.
@@ -54,7 +65,8 @@ public class TreasureHunter {
             hardMode = true;
         } else if (hard.equals("test")) {
             hunter.changeGold(100);
-
+        } else if (hard.equals("test lose")) {
+            hunter.changeGold(0);
         }
     }
 
