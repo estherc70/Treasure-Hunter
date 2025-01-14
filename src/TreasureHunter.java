@@ -31,21 +31,10 @@ public class TreasureHunter {
      * Starts the game; this is the only public method
      */
     public void play() {
-        //while (!gameOver()) {
-            welcomePlayer();
-            enterTown();
-            showMenu();
-        /*}
-        System.out.println("game over");*/
+        welcomePlayer();
+        enterTown();
+        showMenu();
     }
-
-    /*public boolean gameOver() {
-        if (hunter.getGold() < 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }*/
 
     /**
      * Creates a hunter object at the beginning of the game and populates the class member variable with it.
@@ -59,18 +48,20 @@ public class TreasureHunter {
         // set hunter instance variable
         hunter = new Hunter(name, 20);
 
-        System.out.print("Hard mode? (y/n): ");
-        String hard = SCANNER.nextLine().toLowerCase();
-        if (hard.equals("y")) {
+      System.out.print("Easy, normal, or hard mode? (e/n/h): ");
+        String mode = SCANNER.nextLine().toLowerCase();
+        if (mode.equals("h")) {
             hardMode = true;
-        } else if (hard.equals("test")) {
+        } else if (mode.equals("e")) {
+
+        }else if (mode.equals("test")) {
             hunter.changeGold(100);
             hunter.setKit();
-        } else if (hard.equals("test lose")) {
-            hunter.changeGold(0);
+        } else if (mode.equals("test lose")) {
+            hunter.changeGold(-20);
         }
-    }
 
+    }
     /**
      * Creates a new town and adds the Hunter to it.
      */
@@ -109,7 +100,7 @@ public class TreasureHunter {
      */
     private void showMenu() {
         String choice = "";
-        while (!choice.equals("x")) {
+        while ((!choice.equals("x")) && (!(hunter.isGameOver()))) {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");
@@ -120,14 +111,14 @@ public class TreasureHunter {
             System.out.println("(E)xplore surrounding terrain.");
             System.out.println("(M)ove on to a different town.");
             System.out.println("(L)ook for trouble!");
-            System.out.println("(H)unt for treasure!");
-            System.out.println("(H)unt for treasure!");
+            System.out.println("(D)ig for gold");
             System.out.println("Give up the hunt and e(X)it.");
             System.out.println();
             System.out.print("What's your next move? ");
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
         }
+        System.out.println("game over");
     }
 
     /**
