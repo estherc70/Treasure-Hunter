@@ -9,6 +9,7 @@ public class Hunter {
     private String hunterName;
     private String[] kit;
     private int gold;
+    private String[] treasure;
     private boolean isGameOver;
 
     /**
@@ -19,6 +20,8 @@ public class Hunter {
      */
     public Hunter(String hunterName, int startingGold) {
         this.hunterName = hunterName;
+        kit = new String[6]; // only 5 possible items can be stored in kit
+        treasure = new String[3];
         kit = new String[7]; // only 5 possible items can be stored in kit
         gold = startingGold;
         isGameOver = false;
@@ -26,7 +29,7 @@ public class Hunter {
 
 
     public void setKit() {
-        kit = new String[] {"water", "rope", "machete", "horse", "boat", "boots","shovel"};
+        kit = new String[] {"water", "rope", "machete", "horse", "boat"};
     }
 
     //Accessors
@@ -42,12 +45,8 @@ public class Hunter {
     public void changeGold(int modifier) {
         gold += modifier;
         if (gold < 0) {
-            isGameOver = true;
+            gold = 0;
         }
-    }
-
-    public boolean isGameOver() {
-        return isGameOver;
     }
 
     public int getGold() {
@@ -206,4 +205,46 @@ public class Hunter {
         }
         return -1;
     }
+    /**
+     *
+     * @param t treasure to be searched in the treasure inventory
+     * @return a boolean stating true if the treasure is found and false if the treasure isn't found
+     */
+    public boolean hasItemInTreasure(String t) {
+        for (String treasures : treasure) {
+            if (t.equals(treasures)) {
+                // early return
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     *
+     * @return the next position in treasure that isn't filled up
+     */
+    private int emptyPositionInTreasure() {
+        for (int i = 0; i < treasure.length; i++) {
+            if (treasure[i] == null) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     *
+     * @param treasureToAdd the new treasure that was found
+     * @return the boolean that indicates if the treasure was successfully added to the list
+     */
+    public boolean addTreasure(String treasureToAdd) {
+        if (!hasItemInTreasure(treasureToAdd)) {
+            int idx = emptyPositionInTreasure();
+            treasure[idx] = treasureToAdd;
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -135,13 +135,19 @@ public class TreasureHunter {
                 // This town is going away so print its news ahead of time.
                 System.out.println(currentTown.getLatestNews());
                 enterTown();
+                currentTown.setSearched(false);
             }
         } else if (choice.equals("l")) {
             currentTown.lookForTrouble();
-        } else if (choice.equals("d")) {
-            currentTown.digForGold();
         } else if (choice.equals("x")) {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
+        } else if (choice.equals("h") && !currentTown.getSearched()) {
+            System.out.println("Here is a treasure for you!");
+            currentTown.getTreasure();
+            if (hunter.hasItemInTreasure(currentTown.getCurrentTreasure())) {
+                System.out.println("You've already collected this treasure!");
+            }
+            currentTown.setSearched(true);
         } else {
             System.out.println("Yikes! That's an invalid option! Try again.");
         }
