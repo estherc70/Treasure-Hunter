@@ -31,10 +31,21 @@ public class TreasureHunter {
      * Starts the game; this is the only public method
      */
     public void play() {
-        welcomePlayer();
-        enterTown();
-        showMenu();
+        //while (!gameOver()) {
+            welcomePlayer();
+            enterTown();
+            showMenu();
+        /*}
+        System.out.println("game over");*/
     }
+
+    /*public boolean gameOver() {
+        if (hunter.getGold() < 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }*/
 
     /**
      * Creates a hunter object at the beginning of the game and populates the class member variable with it.
@@ -56,7 +67,7 @@ public class TreasureHunter {
             hunter.changeGold(100);
             hunter.setKit();
         } else if (hard.equals("test lose")) {
-            hunter.changeGold(-20);
+            hunter.changeGold(0);
         }
     }
 
@@ -98,7 +109,7 @@ public class TreasureHunter {
      */
     private void showMenu() {
         String choice = "";
-        while ((!choice.equals("x")) && (!(hunter.isGameOver()))) {
+        while (!choice.equals("x")) {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");
@@ -109,14 +120,14 @@ public class TreasureHunter {
             System.out.println("(E)xplore surrounding terrain.");
             System.out.println("(M)ove on to a different town.");
             System.out.println("(L)ook for trouble!");
-            System.out.println("(D)ig for gold");
+            System.out.println("(H)unt for treasure!");
+            System.out.println("(H)unt for treasure!");
             System.out.println("Give up the hunt and e(X)it.");
             System.out.println();
             System.out.print("What's your next move? ");
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
         }
-        System.out.println("game over");
     }
 
     /**
@@ -133,13 +144,19 @@ public class TreasureHunter {
                 // This town is going away so print its news ahead of time.
                 System.out.println(currentTown.getLatestNews());
                 enterTown();
+                currentTown.setSearched(false);
             }
         } else if (choice.equals("l")) {
             currentTown.lookForTrouble();
-        } else if (choice.equals("d")) {
-            currentTown.digForGold();
         } else if (choice.equals("x")) {
             System.out.println("Fare thee well, " + hunter.getHunterName() + "!");
+        } else if (choice.equals("h") && !currentTown.getSearched()) {
+            System.out.println("Here is a treasure for you!");
+            currentTown.getTreasure();
+            if (hunter.hasItemInTreasure(currentTown.getCurrentTreasure())) {
+                System.out.println("You've already collected this treasure!");
+            }
+            currentTown.setSearched(true);
         } else {
             System.out.println("Yikes! That's an invalid option! Try again.");
         }

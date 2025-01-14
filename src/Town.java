@@ -12,6 +12,9 @@ public class Town {
     private String printMessage;
     private boolean toughTown;
     private boolean hasDig;
+    private boolean searched;
+    private String treasure;
+
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -22,7 +25,8 @@ public class Town {
     public Town(Shop shop, double toughness) {
         this.shop = shop;
         this.terrain = getNewTerrain();
-
+        searched = false;
+        treasure = "";
         // the hunter gets set using the hunterArrives method, which
         // gets called from a client class
         hunter = null;
@@ -30,7 +34,6 @@ public class Town {
 
         // higher toughness = more likely to be a tough town
         toughTown = (Math.random() < toughness);
-        hasDig = false;
     }
 
     public Terrain getTerrain() {
@@ -68,7 +71,7 @@ public class Town {
             printMessage = "You used your " + item + " to cross the " + terrain.getTerrainName() + ".";
             if (checkItemBreak()) {
                 hunter.removeItemFromKit(item);
-                printMessage += "\nUnfortunately, you lost your " + item;
+                printMessage += "\nUnfortunately, your " + item + " broke.";
             }
             return true;
         }
@@ -115,23 +118,6 @@ public class Town {
         }
     }
 
-    public void digForGold() {
-        if ((hunter.hasItemInKit("shovel")) && (!hasDig)) {
-            if (((int) (Math.random() * 2) + 1) == 1) {
-                int digGold = (int) (Math.random() * 20) + 1;
-                hunter.changeGold(digGold);
-                System.out.println("You dug up " + digGold + " gold!");
-            } else {
-                System.out.println("You dug but only found dirt");
-            }
-            hasDig = true;
-        } else if (hasDig){
-            System.out.println("You already dug for gold in this town.");
-        } else {
-            System.out.println("You can't dig for gold without a shovel");
-        }
-    }
-
     public String infoString() {
         return "This nice little town is surrounded by " + terrain.getTerrainName() + ".";
     }
@@ -166,5 +152,60 @@ public class Town {
     private boolean checkItemBreak() {
         double rand = Math.random();
         return (rand < 0.5);
+    }
+
+    /**
+     *
+     * @return the random treasure that's generated as well as add the treasure to the treasure list
+     *
+     */
+
+    public String getTreasure() {
+        double rnd = (int) (Math.random() * 40);
+        if (rnd < 10) {
+            hunter.addTreasure("crown");
+            treasure = "crown";
+            return "You found a crown!";
+        }
+        else if (rnd < 20) {
+            hunter.addTreasure("trophy");
+            treasure = "trophy";
+            return "You found a trophy!";
+        }
+        else if (rnd < 30) {
+            hunter.addTreasure("gem");
+            treasure = "gem";
+            return "You found a gem!";
+        }
+        else {
+            return "You found dust! Useless!";
+        }
+
+    }
+
+    /**
+     *
+     * @return returns the latest treasure that was found
+     */
+    public String getCurrentTreasure() {
+        return treasure;
+    }
+
+
+    /**
+     *
+     * @return the boolean searched
+     */
+
+    public boolean getSearched() {
+        return searched;
+    }
+
+    /**
+     *
+     * @param bool new boolean to be set to search
+     */
+    public void setSearched(boolean bool) {
+        searched = bool;
     }
 }
