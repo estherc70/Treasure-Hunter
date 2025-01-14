@@ -86,6 +86,10 @@ public class Hunter {
         return true;
     }
 
+    public boolean isGameOver() {
+        return isGameOver;
+    }
+
     /**
      * Removes an item from the kit by setting the index of the item to null.
      *
