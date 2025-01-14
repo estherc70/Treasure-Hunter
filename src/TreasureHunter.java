@@ -48,18 +48,20 @@ public class TreasureHunter {
         // set hunter instance variable
         hunter = new Hunter(name, 20);
 
-        System.out.print("Hard mode? (y/n): ");
-        String hard = SCANNER.nextLine().toLowerCase();
-        if (hard.equals("y")) {
+      System.out.print("Easy, normal, or hard mode? (e/n/h): ");
+        String mode = SCANNER.nextLine().toLowerCase();
+        if (mode.equals("h")) {
             hardMode = true;
-        } else if (hard.equals("test")) {
+        } else if (mode.equals("e")) {
+
+        }else if (mode.equals("test")) {
             hunter.changeGold(100);
             hunter.setKit();
-        } else if (hard.equals("test lose")) {
+        } else if (mode.equals("test lose")) {
             hunter.changeGold(-20);
         }
-    }
 
+    }
     /**
      * Creates a new town and adds the Hunter to it.
      */
