@@ -22,6 +22,11 @@ public class Hunter {
         gold = startingGold;
     }
 
+
+    public void setKit() {
+        kit = new String[] {"water", "rope", "machete", "horse", "boat"};
+    }
+
     //Accessors
     public String getHunterName() {
         return hunterName;
