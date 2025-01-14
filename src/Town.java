@@ -11,6 +11,7 @@ public class Town {
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
+    private boolean hasDig;
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -29,6 +30,7 @@ public class Town {
 
         // higher toughness = more likely to be a tough town
         toughTown = (Math.random() < toughness);
+        hasDig = false;
     }
 
     public Terrain getTerrain() {
@@ -110,6 +112,23 @@ public class Town {
                 printMessage += Colors.RED + "\nYou lost the brawl and pay " + goldDiff + " gold." + Colors.RESET;
                 hunter.changeGold(-goldDiff);
             }
+        }
+    }
+
+    public void digForGold() {
+        if ((hunter.hasItemInKit("shovel")) && (!hasDig)) {
+            if (((int) (Math.random() * 2) + 1) == 1) {
+                int digGold = (int) (Math.random() * 20) + 1;
+                hunter.changeGold(digGold);
+                System.out.println("You dug up " + digGold + " gold!");
+            } else {
+                System.out.println("You dug but only found dirt");
+            }
+            hasDig = true;
+        } else if (hasDig){
+            System.out.println("You already dug for gold in this town.");
+        } else {
+            System.out.println("You can't dig for gold without a shovel");
         }
     }
 
