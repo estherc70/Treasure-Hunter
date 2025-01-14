@@ -31,21 +31,10 @@ public class TreasureHunter {
      * Starts the game; this is the only public method
      */
     public void play() {
-        //while (!gameOver()) {
-            welcomePlayer();
-            enterTown();
-            showMenu();
-        /*}
-        System.out.println("game over");*/
+        welcomePlayer();
+        enterTown();
+        showMenu();
     }
-
-    /*public boolean gameOver() {
-        if (hunter.getGold() < 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }*/
 
     /**
      * Creates a hunter object at the beginning of the game and populates the class member variable with it.
@@ -67,7 +56,7 @@ public class TreasureHunter {
             hunter.changeGold(100);
             hunter.setKit();
         } else if (hard.equals("test lose")) {
-            hunter.changeGold(0);
+            hunter.changeGold(-20);
         }
     }
 
@@ -109,7 +98,7 @@ public class TreasureHunter {
      */
     private void showMenu() {
         String choice = "";
-        while (!choice.equals("x")) {
+        while ((!choice.equals("x")) && (!(hunter.isGameOver()))) {
             System.out.println();
             System.out.println(currentTown.getLatestNews());
             System.out.println("***");
@@ -126,6 +115,7 @@ public class TreasureHunter {
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
         }
+        System.out.println("game over");
     }
 
     /**

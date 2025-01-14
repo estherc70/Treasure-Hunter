@@ -9,6 +9,7 @@ public class Hunter {
     private String hunterName;
     private String[] kit;
     private int gold;
+    private boolean isGameOver;
 
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -20,6 +21,7 @@ public class Hunter {
         this.hunterName = hunterName;
         kit = new String[6]; // only 5 possible items can be stored in kit
         gold = startingGold;
+        isGameOver = false;
     }
 
 
@@ -40,8 +42,12 @@ public class Hunter {
     public void changeGold(int modifier) {
         gold += modifier;
         if (gold < 0) {
-            gold = 0;
+            isGameOver = true;
         }
+    }
+
+    public boolean isGameOver() {
+        return isGameOver;
     }
 
     public int getGold() {
