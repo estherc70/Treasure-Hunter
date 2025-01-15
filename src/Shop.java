@@ -169,6 +169,9 @@ public class Shop {
      */
     public int getBuyBackCost(String item) {
         int cost = (int) (getCostOfItem(item) * markdown);
+        if (markdown == 0) {
+            cost = getCostOfItem(item);
+        }
         return cost;
     }
 }
