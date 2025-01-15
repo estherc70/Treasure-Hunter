@@ -17,6 +17,7 @@ public class TreasureHunter {
     private Hunter hunter;
     private boolean hardMode;
     private boolean easyMode;
+    private boolean secertSamurai;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -27,6 +28,7 @@ public class TreasureHunter {
         hunter = null;
         hardMode = false;
         easyMode = false;
+        secertSamurai = false;
     }
 
     /**
@@ -62,6 +64,9 @@ public class TreasureHunter {
             hunter.setKit();
         } else if (mode.equals("test lose")) {
             hunter.changeGold(-20);
+        } else if (mode.equals("s")) {
+            secertSamurai = true;
+            hunter.secertKit();
         }
 
     }
