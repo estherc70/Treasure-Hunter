@@ -222,4 +222,6 @@ public class Town {
     public void setSearched(boolean bool) {
         searched = bool;
     }
+
+
 }
