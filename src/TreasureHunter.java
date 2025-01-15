@@ -119,7 +119,13 @@ public class TreasureHunter {
             choice = SCANNER.nextLine().toLowerCase();
             processChoice(choice);
         }
-        System.out.println("game over");
+        if (hunter.getAllTreasures()) {
+            System.out.println("Congratulations, you have found the last of the three treasures you win!");
+        }
+        else {
+            System.out.println("game over");
+        }
+
     }
 
     /**
@@ -153,10 +159,15 @@ public class TreasureHunter {
                 System.out.println("Here is a treasure for you!");
                 System.out.println(currentTown.getTreasure());
                 if (hunter.hasItemInTreasure(currentTown.getCurrentTreasure())) {
-                    System.out.println("You've already collected this treasure!");
+                   System.out.println("You've already collected this treasure!");
                 }
                 hunter.addTreasure(currentTown.getCurrentTreasure());
+                if (hunter.otherTwoTreasure(currentTown.getCurrentTreasure())) {
+                    hunter.setAllTreasures(true);
+                    hunter.setIsGameOver(true);
+                }
                 currentTown.setSearched(true);
+
             }
         } else {
             System.out.println("Yikes! That's an invalid option! Try again.");

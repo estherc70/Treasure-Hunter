@@ -11,6 +11,7 @@ public class Hunter {
     private int gold;
     private String[] treasure;
     private boolean isGameOver;
+    private boolean allTreasures;
 
 
     /**
@@ -25,6 +26,28 @@ public class Hunter {
         kit = new String[7]; // only 5 possible items can be stored in kit
         gold = startingGold;
         isGameOver = false;
+        allTreasures = false;
+    }
+
+    public boolean otherTwoTreasure(String found) {
+        String one = "";
+        String two = "";
+        if (found.equals("crown")) {
+            one = "gem";
+            two = "trophy";
+        }
+        else if (found.equals("trophy")) {
+            one = "crown";
+            two = "gem";
+        }
+        else {
+            one = "trophy";
+            two = "crown";
+        }
+        if (hasItemInTreasure(one) && hasItemInTreasure(two)) {
+            return true;
+        }
+        return false;
     }
 
 
@@ -49,6 +72,29 @@ public class Hunter {
             gold = 0;
         }
     }
+
+    /**
+     *
+     * @return is all the treasures are found
+     */
+    public boolean allThreeTreasure() {
+        if (hasItemInKit("crown") && hasItemInKit("trophy") && hasItemInKit("gem")) {
+            isGameOver = true;
+            allTreasures = true;
+            return true;
+
+        }
+        return false;
+    }
+
+    public void setAllTreasures(boolean bool) {
+        allTreasures = bool;
+    }
+
+    public boolean getAllTreasures() {
+        return allTreasures;
+    }
+
 
     public int getGold() {
         return gold;
@@ -89,6 +135,10 @@ public class Hunter {
 
     public boolean isGameOver() {
         return isGameOver;
+    }
+
+    public void setIsGameOver(boolean bool) {
+        isGameOver = bool;
     }
 
     /**
