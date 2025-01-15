@@ -16,6 +16,7 @@ public class Shop {
     private static final int BOAT_COST = 20;
     private static final int BOOT_COST = 8;
     private static final int SHOVEL_COST = 8;
+    private static final int SWORD_COST = 0;
 
     // static variables
     private static final Scanner SCANNER = new Scanner(System.in);
@@ -50,7 +51,7 @@ public class Shop {
             System.out.print("What're you lookin' to buy? ");
             String item = SCANNER.nextLine().toLowerCase();
             int cost = checkMarketPrice(item, true);
-            if (cost == 0) {
+            if ((cost == 0) && (customer.getKit().length != 8)) {
                 System.out.println("We ain't got none of those.");
             } else {
                 System.out.print("It'll cost you " + cost + " gold. Buy it (y/n)? ");
@@ -91,6 +92,9 @@ public class Shop {
         str += Colors.BLACK + "Boat: " + BOAT_COST + " gold\n" + Colors.RESET;
         str += Colors.BLACK + "Boots: " + BOOT_COST + " gold\n" + Colors.RESET;
         str += Colors.BLACK + "Shovel: " + SHOVEL_COST + " gold\n" + Colors.RESET;
+        if (customer.getKit().length == 8) {
+            str += Colors.BLACK + "Sword: " + SWORD_COST + " gold\n" + Colors.RESET;
+        }
         return str;
     }
 
@@ -169,6 +173,9 @@ public class Shop {
      */
     public int getBuyBackCost(String item) {
         int cost = (int) (getCostOfItem(item) * markdown);
+        if (markdown == 0) {
+            cost = getCostOfItem(item);
+        }
         return cost;
     }
 }

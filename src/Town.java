@@ -14,6 +14,8 @@ public class Town {
     private boolean hasDig;
     private boolean searched;
     private String treasure;
+    private boolean easyTown;
+    private boolean isEasyMode;
 
 
     /**
@@ -34,6 +36,12 @@ public class Town {
 
         // higher toughness = more likely to be a tough town
         toughTown = (Math.random() < toughness);
+        easyTown = (Math.random() < toughness);
+        if (toughness == 0.25) {
+            isEasyMode = true;
+        } else {
+            isEasyMode = false;
+        }
         hasDig = false;
     }
 
@@ -115,6 +123,8 @@ public class Town {
         double noTroubleChance;
         if (toughTown) {
             noTroubleChance = 0.66;
+        } else if (easyTown){
+            noTroubleChance = 0.165;
         } else {
             noTroubleChance = 0.33;
         }
@@ -168,7 +178,11 @@ public class Town {
      */
     private boolean checkItemBreak() {
         double rand = Math.random();
-        return (rand < 0.5);
+        if (isEasyMode) {
+            return false;
+        } else {
+            return (rand < 0.5);
+        }
     }
 
     /**

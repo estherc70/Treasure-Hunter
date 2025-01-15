@@ -55,6 +55,14 @@ public class Hunter {
         kit = new String[] {"water", "rope", "machete", "horse", "boat", "boots","shovel"};
     }
 
+    public void secertKit() {
+        kit = new String[8];
+    }
+
+    public String[] getKit() {
+        return kit;
+    }
+
     //Accessors
     public String getHunterName() {
         return hunterName;
@@ -109,6 +117,10 @@ public class Hunter {
      */
     public boolean buyItem(String item, int costOfItem) {
         if (costOfItem == 0 || gold < costOfItem || hasItemInKit(item)) {
+            if (kit.length == 8) {
+                addItem(item);
+                return true;
+            }
             return false;
         }
         gold -= costOfItem;
