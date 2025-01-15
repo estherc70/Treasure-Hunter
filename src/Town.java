@@ -34,6 +34,7 @@ public class Town {
 
         // higher toughness = more likely to be a tough town
         toughTown = (Math.random() < toughness);
+        hasDig = false;
     }
 
     public Terrain getTerrain() {
@@ -71,13 +72,29 @@ public class Town {
             printMessage = "You used your " + item + " to cross the " + terrain.getTerrainName() + ".";
             if (checkItemBreak()) {
                 hunter.removeItemFromKit(item);
-                printMessage += "\nUnfortunately, your " + item + " broke.";
+                printMessage += "\nUnfortunately, you lost your " + item;
             }
             return true;
         }
-
         printMessage = "You can't leave town, " + hunter.getHunterName() + ". You don't have a " + terrain.getNeededItem() + ".";
         return false;
+    }
+
+    public void digForGold() {
+        if ((hunter.hasItemInKit("shovel")) && (!hasDig)) {
+            if (((int) (Math.random() * 2) + 1) == 1) {
+                int digGold = (int) (Math.random() * 20) + 1;
+                hunter.changeGold(digGold);
+                System.out.println("You dug up " + digGold + " gold!");
+            } else {
+                System.out.println("You dug but only found dirt");
+            }
+            hasDig = true;
+        } else if (hasDig){
+            System.out.println("You already dug for gold in this town.");
+        } else {
+            System.out.println("You can't dig for gold without a shovel");
+        }
     }
 
     /**
