@@ -136,6 +136,7 @@ public class TreasureHunter {
         if (choice.equals("b") || choice.equals("s")) {
             currentTown.enterShop(choice);
         } else if (choice.equals("e")) {
+            System.out.println();
             System.out.println(currentTown.getTerrain().infoString());
         } else if (choice.equals("m")) {
             if (currentTown.leaveTown()) {
@@ -160,7 +161,7 @@ public class TreasureHunter {
                 if (hunter.hasItemInTreasure(currentTown.getCurrentTreasure())) {
                     System.out.println("You've already collected this treasure!");
                 }
-                hunter.addTreasure(currentTown.getTreasure());
+                hunter.addTreasure(currentTown.getCurrentTreasure());
                 currentTown.setSearched(true);
             }
         } else {

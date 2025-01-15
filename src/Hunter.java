@@ -12,6 +12,7 @@ public class Hunter {
     private String[] treasure;
     private boolean isGameOver;
 
+
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
      *
@@ -154,6 +155,18 @@ public class Hunter {
         return printableKit;
     }
 
+    public String getTreasures() {
+        String printableTreasure = "";
+        String space = " ";
+
+        for (String item : treasure) {
+            if (item != null) {
+                printableTreasure += item + space;
+            }
+        }
+        return printableTreasure;
+    }
+
     /**
      * @return A string representation of the hunter.
      */
@@ -161,6 +174,13 @@ public class Hunter {
         String str = hunterName + " has " + Colors.YELLOW + gold + Colors.RESET + " gold";
         if (!kitIsEmpty()) {
             str += " and " + getInventory();
+        }
+        str += "\nTreasures found: ";
+        if (!treasureIsEmpty()) {
+            str += getTreasures() + " ";
+        }
+        else {
+            str += "none";
         }
         return str;
     }
@@ -250,5 +270,16 @@ public class Hunter {
         }
         return false;
     }
+
+    private boolean treasureIsEmpty() {
+        for (String string : treasure) {
+            if (string != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 
 }
