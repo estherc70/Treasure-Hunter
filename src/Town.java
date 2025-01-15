@@ -163,17 +163,14 @@ public class Town {
     public String getTreasure() {
         double rnd = (int) (Math.random() * 40);
         if (rnd < 10) {
-            hunter.addTreasure("crown");
             treasure = "crown";
             return "You found a crown!";
         }
         else if (rnd < 20) {
-            hunter.addTreasure("trophy");
             treasure = "trophy";
             return "You found a trophy!";
         }
         else if (rnd < 30) {
-            hunter.addTreasure("gem");
             treasure = "gem";
             return "You found a gem!";
         }
