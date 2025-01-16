@@ -108,7 +108,7 @@ public class Shop {
         if ((customer.buyItem(item, costOfItem))) {
             System.out.println("Ye' got yerself a " +  Colors.PURPLE + item + Colors.RESET + ". Come again soon.");
         } else if (customer.hasItemInKit("sword")) {
-            System.out.println("Ye' got yerself a " +  Colors.PURPLE + item + Colors.RESET + ". Come again soon.");
+            System.out.println("The sword intimidates the shopkeeper and he gives you the item freely");
         }else {
             System.out.println("Hmm, either you don't have enough gold or you've already got one of those!");
         }
