@@ -85,15 +85,15 @@ public class Shop {
      * @return the string representing the shop's items available for purchase and their prices.
      */
     public String inventory() {
-        String str = Colors.BLACK + "Water: " + WATER_COST + " gold\n" + Colors.RESET;
-        str += Colors.BLACK + "Rope: " + ROPE_COST + " gold\n" + Colors.RESET;
-        str += Colors.BLACK + "Machete: " + MACHETE_COST + " gold\n" + Colors.RESET;
-        str += Colors.BLACK + "Horse: " + HORSE_COST + " gold\n" + Colors.RESET;
-        str += Colors.BLACK + "Boat: " + BOAT_COST + " gold\n" + Colors.RESET;
-        str += Colors.BLACK + "Boots: " + BOOT_COST + " gold\n" + Colors.RESET;
-        str += Colors.BLACK + "Shovel: " + SHOVEL_COST + " gold\n" + Colors.RESET;
+        String str = Colors.PURPLE + "Water: " + WATER_COST + " gold\n" + Colors.RESET;
+        str += Colors.PURPLE + "Rope: " + ROPE_COST + " gold\n" + Colors.RESET;
+        str += Colors.PURPLE + "Machete: " + MACHETE_COST + " gold\n" + Colors.RESET;
+        str += Colors.PURPLE + "Horse: " + HORSE_COST + " gold\n" + Colors.RESET;
+        str += Colors.PURPLE + "Boat: " + BOAT_COST + " gold\n" + Colors.RESET;
+        str += Colors.PURPLE + "Boots: " + BOOT_COST + " gold\n" + Colors.RESET;
+        str += Colors.PURPLE + "Shovel: " + SHOVEL_COST + " gold\n" + Colors.RESET;
         if (customer.getKit().length == 8) {
-            str += Colors.BLACK + "Sword: " + SWORD_COST + " gold\n" + Colors.RESET;
+            str += Colors.PURPLE + "Sword: " + SWORD_COST + " gold\n" + Colors.RESET;
         }
         return str;
     }
