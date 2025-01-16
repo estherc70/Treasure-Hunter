@@ -122,11 +122,11 @@ public class Town {
     public void lookForTrouble() {
         double noTroubleChance;
         if (toughTown) {
-            noTroubleChance = 0.66;
+            noTroubleChance = 0.60;
         } else if (easyTown){
-            noTroubleChance = 0.165;
+            noTroubleChance = 0.100;
         } else {
-            noTroubleChance = 0.33;
+            noTroubleChance = 0.30;
         }
         if (Math.random() > noTroubleChance) {
             printMessage = Colors.BLUE + "You couldn't find any trouble" + Colors.BLUE;
