@@ -129,7 +129,7 @@ public class Town {
             noTroubleChance = 0.30;
         }
         if (Math.random() > noTroubleChance) {
-            printMessage = Colors.BLUE + "You couldn't find any trouble" + Colors.BLUE;
+            printMessage = Colors.BLUE + "You couldn't find any trouble" + Colors.RESET;
         } else {
             printMessage = Colors.RED + "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n" + Colors.RESET;
             int goldDiff = (int) (Math.random() * 10) + 1;
