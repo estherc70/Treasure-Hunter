@@ -117,15 +117,27 @@ public class Hunter {
      */
     public boolean buyItem(String item, int costOfItem) {
         if (costOfItem == 0 || gold < costOfItem || hasItemInKit(item)) {
-            if (kit.length == 8) {
+            if ((kit.length == 8) && (hasItemInKit("sword"))) {
+                addItem(item);
+                return true;
+            } if (item.equals("sword")) {
                 addItem(item);
                 return true;
             }
             return false;
         }
-        gold -= costOfItem;
-        addItem(item);
-        return true;
+        if (hasItemInKit("sword")) {
+            gold -= 0;
+            addItem(item);
+            if (hasItemInKit(item)) {
+                return false;
+            }
+            return true;
+        } else {
+            gold -= costOfItem;
+            addItem(item);
+            return true;
+        }
     }
 
     /**
