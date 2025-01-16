@@ -241,7 +241,7 @@ public class Hunter {
         if (!treasureIsEmpty()) {
             str += getTreasures() + " ";
         }
-        else {
+        else if (treasureIsEmpty()) {
             str += "none";
         }
         return str;
