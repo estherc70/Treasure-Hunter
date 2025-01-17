@@ -93,15 +93,15 @@ public class Town {
             if (((int) (Math.random() * 2) + 1) == 1) {
                 int digGold = (int) (Math.random() * 20) + 1;
                 hunter.changeGold(digGold);
-                System.out.println("You dug up " + digGold + " gold!");
+                printMessage = ("You dug up " + digGold + " gold!");
             } else {
-                System.out.println("You dug but only found dirt");
+                printMessage = ("You dug but only found dirt");
             }
             hasDig = true;
         } else if (hasDig){
-            System.out.println("You already dug for gold in this town.");
+            printMessage = ("You already dug for gold in this town.");
         } else {
-            System.out.println("You can't dig for gold without a shovel");
+            printMessage = ("You can't dig for gold without a shovel");
         }
     }
 
