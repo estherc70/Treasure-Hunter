@@ -93,7 +93,7 @@ public class Town {
             if (((int) (Math.random() * 2) + 1) == 1) {
                 int digGold = (int) (Math.random() * 20) + 1;
                 hunter.changeGold(digGold);
-                printMessage = ("You dug up " + digGold + " gold!");
+                printMessage = ("You dug up " + Colors.YELLOW + digGold + " gold!" + Colors.RESET);
             } else {
                 printMessage = ("You dug but only found dirt");
             }
@@ -142,7 +142,7 @@ public class Town {
                 hunter.changeGold(goldDiff);
             } else {
                 printMessage += Colors.RED + "That'll teach you to go lookin' fer trouble in MY town! Now pay up!"+ Colors.RESET;
-                printMessage += Colors.RED + "\nYou lost the brawl and pay " + goldDiff + " gold." + Colors.RESET;
+                printMessage += Colors.RED + "\nYou lost the brawl and pay " + Colors.YELLOW + goldDiff + " gold." + Colors.RESET;
                 hunter.changeGold(-goldDiff);
             }
         }

@@ -223,7 +223,7 @@ public class Hunter {
 
         for (String item : kit) {
             if (item != null) {
-                printableKit += item + space;
+                printableKit += Colors.PURPLE + item + Colors.RESET + space;
             }
         }
         return printableKit;
@@ -247,7 +247,7 @@ public class Hunter {
     public String infoString() {
         String str = hunterName + " has " + Colors.YELLOW + gold + Colors.RESET + " gold";
         if (!kitIsEmpty()) {
-            str += " and " + getInventory();
+            str += " and " + Colors.PURPLE + getInventory() + Colors.RESET;
         }
         str += "\nTreasures found: ";
         if (!treasureIsEmpty()) {
